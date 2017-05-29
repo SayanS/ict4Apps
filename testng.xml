@@ -15,12 +15,12 @@
         </classes>
     </test>
 
-    <test name="MyTest2" verbose="1" preserve-order="false">
-        <parameter name="browser" value="chrome"/>
-        <parameter name="platform" value="WIN10"/>
-        <classes>
-            <class name="SmokeTests"/>
-        </classes>
-    </test>
+    <!--<test name="MyTest2" verbose="1" preserve-order="false">-->
+        <!--<parameter name="browser" value="chrome"/>-->
+        <!--<parameter name="platform" value="WIN10"/>-->
+        <!--<classes>-->
+            <!--<class name="SmokeTests"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 
 </suite>
