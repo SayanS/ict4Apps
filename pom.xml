@@ -34,8 +34,6 @@
             <version>6.11</version>
         </dependency>
 
-
-
         <dependency>
             <groupId>ru.yandex.qatools.allure</groupId>
             <artifactId>allure-testng-adaptor</artifactId>
@@ -47,24 +45,22 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>ru.yandex.qatools.allure</groupId>-->
-            <!--<artifactId>allure-report-data</artifactId>-->
-            <!--<version>1.5.2</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>ru.yandex.qatools.allure</groupId>-->
-            <!--<artifactId>allure-java-aspects</artifactId>-->
-            <!--<version>1.5.2</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>ru.yandex.qatools.allure</groupId>
+            <artifactId>allure-report-data</artifactId>
+            <version>1.5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.yandex.qatools.allure</groupId>
+            <artifactId>allure-java-aspects</artifactId>
+            <version>1.5.2</version>
+        </dependency>
 
         <dependency>
             <groupId>ru.yandex.qatools.allure</groupId>
             <artifactId>allure-commandline</artifactId>
             <version>1.4.21</version>
         </dependency>
-
-
         <!--<dependency>-->
             <!--<groupId>ru.yandex.qatools.allure</groupId>-->
             <!--<artifactId>allure-maven-plugin</artifactId>-->
@@ -127,7 +123,6 @@
         </plugins>
     </build>
 
-
     <reporting>
         <excludeDefaults>true</excludeDefaults>
         <plugins>
@@ -138,7 +133,5 @@
             </plugin>
         </plugins>
     </reporting>
-
-
 
 </project>
