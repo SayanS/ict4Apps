@@ -8,7 +8,7 @@
         <!--<exclude name="ignore"/>-->
         <!--</run>-->
         <!--</groups>-->
-        <parameter name="platform" value="WIN10"/>
+        <parameter name="platform" value="LINUX"/>
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="SmokeTests"/>
