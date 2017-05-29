@@ -1,14 +1,19 @@
 import models.SpecialOffersCarouselContainer;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
 public class SmokeTests extends BaseTests{
     WelcomePage welcomePage;
     ProductsPage productsPage;
+    SpecialOfferPage specialOfferPage;
+
+    @Test
+    public void checkTitleLinkOfSpecialOfferCarusel(){
+        welcomePage=getWelcomePage();
+        specialOfferPage=welcomePage.clickOnTitleOfSpecialOfferCarousel(2);
+        Assert.assertEquals("SSSSSS",specialOfferPage);
+    }
 
     @Test
     public void checkNextFunctionOfSpecialOfferCarusel() throws InterruptedException {
@@ -18,6 +23,8 @@ public class SmokeTests extends BaseTests{
         welcomePage.clickOnNextSpecialOfferCarusel();
         Assert.assertNotEquals(welcomePage.getVisibleSpecialOfferCarouselContainers(),VisibleSpecialOffersCarouselContainersBeforeClick, "The arrays shouldn't be equal");
     }
+
+
 
 //    @Test
 //    public void maxDepthMenuItemOpensAppropriatePage() throws InterruptedException {

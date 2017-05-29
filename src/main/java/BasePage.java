@@ -39,6 +39,12 @@ public class BasePage {
     public WebElement find(String xpath) {
         return (new WebDriverWait(getWebDriver(),4)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
     }
+
+    public List<WebElement> findAll(String xpath) {
+        (new WebDriverWait(getWebDriver(),5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("("+xpath+")[1]")));
+        return getWebDriver().findElements(By.xpath(xpath));
+    }
+
     public String[] getWebelementsText(List<WebElement> webElements){
         String[] webelementsText=new String[webElements.size()];
         for(int i=1;i<webelementsText.length;i++){

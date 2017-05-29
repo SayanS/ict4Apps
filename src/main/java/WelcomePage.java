@@ -11,9 +11,9 @@ import java.util.List;
 
 public class WelcomePage extends BasePage {
 
-    String Visible_SpecialOffersContainers_Titles=".//div[@id='p_p_id_PRODUCT_PORTLET_WAR_ict4appsportlet_']//div[@class='slick-track']/div[@class='slick-slide slick-active']//h3/a";
-    String Visible_SpecialOffersContainers_Descriptions=".//div[@id='p_p_id_PRODUCT_PORTLET_WAR_ict4appsportlet_']//div[@class='slick-track']/div[@class='slick-slide slick-active']//div[@id='latestDesc']";
-    String Visible_SpecialOffersContainers_Images=".//div[@id='p_p_id_PRODUCT_PORTLET_WAR_ict4appsportlet_']//div[@class='slick-track']/div[@class='slick-slide slick-active']//img";
+    String VISIBLE_SPECIAL_OFFERS_CONTAINERS_TITLES=".//div[@id='p_p_id_PRODUCT_PORTLET_WAR_ict4appsportlet_']//div[@class='slick-track']/div[@class='slick-slide slick-active']//h3/a";
+    String VISIBLE_SPECIAL_OFFERS_CONTAINERS_DESCRIPTIONS=".//div[@id='p_p_id_PRODUCT_PORTLET_WAR_ict4appsportlet_']//div[@class='slick-track']/div[@class='slick-slide slick-active']//div[@id='latestDesc']";
+    String VISIBLE_SPECIAL_OFFERS_CONTAINERS_IMAGES=".//div[@id='p_p_id_PRODUCT_PORTLET_WAR_ict4appsportlet_']//div[@class='slick-track']/div[@class='slick-slide slick-active']//img";
 
     @FindBy(how = How.XPATH, xpath = "//ul[@role='menubar']/li/a")
     private List<WebElement> headerMenu;
@@ -76,11 +76,19 @@ public class WelcomePage extends BasePage {
         SpecialOffersCarouselContainer[] visibleContainers=new SpecialOffersCarouselContainer[visibleConteiners];
         for(int i=0;i<visibleConteiners;i++){
             visibleContainers[i]=new SpecialOffersCarouselContainer();
-            moveTo(getWebDriver().findElement(By.xpath("("+Visible_SpecialOffersContainers_Images+")["+(i+1)+"]")));
-            visibleContainers[i].imageUrl=getWebDriver().findElement(By.xpath("("+Visible_SpecialOffersContainers_Images+")["+(i+1)+"]")).getAttribute("src").replace("http://demo.ict4apps.com","");
-            visibleContainers[i].description=getWebDriver().findElement(By.xpath("("+Visible_SpecialOffersContainers_Descriptions+")["+(i+1)+"]")).getText();
-            visibleContainers[i].title=getWebDriver().findElement(By.xpath("("+Visible_SpecialOffersContainers_Titles+")["+(i+1)+"]")).getText();
+            moveTo(getWebDriver().findElement(By.xpath("("+VISIBLE_SPECIAL_OFFERS_CONTAINERS_IMAGES+")["+(i+1)+"]")));
+            visibleContainers[i].imageUrl=getWebDriver().findElement(By.xpath("("+VISIBLE_SPECIAL_OFFERS_CONTAINERS_IMAGES+")["+(i+1)+"]")).getAttribute("src").replace("http://demo.ict4apps.com","");
+            visibleContainers[i].description=getWebDriver().findElement(By.xpath("("+VISIBLE_SPECIAL_OFFERS_CONTAINERS_DESCRIPTIONS+")["+(i+1)+"]")).getText();
+            visibleContainers[i].title=getWebDriver().findElement(By.xpath("("+VISIBLE_SPECIAL_OFFERS_CONTAINERS_TITLES+")["+(i+1)+"]")).getText();
         }
         return visibleContainers;
     }
+
+    public SpecialOfferPage clickOnTitleOfSpecialOfferCarousel(int i) {
+        moveTo(find("("+VISIBLE_SPECIAL_OFFERS_CONTAINERS_IMAGES+")["+(i+1)+"]"));
+        find("("+VISIBLE_SPECIAL_OFFERS_CONTAINERS_TITLES+")["+(i+1)+"]").click();
+        return new SpecialOfferPage(getWebDriver());
+    }
+
+
 }
