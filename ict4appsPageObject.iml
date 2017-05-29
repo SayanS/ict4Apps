@@ -51,7 +51,7 @@
     <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.websocket:websocket-api:9.4.3.v20170317" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-client:9.4.3.v20170317" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-http:9.4.3.v20170317" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-http:9.2.2.v20140723" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.websocket:websocket-common:9.4.3.v20170317" level="project" />
     <orderEntry type="library" name="Maven: xalan:serializer:2.7.2" level="project" />
     <orderEntry type="library" name="Maven: xml-apis:xml-apis:1.4.01" level="project" />
@@ -67,9 +67,17 @@
     <orderEntry type="library" name="Maven: ru.yandex.qatools.allure:allure-java-annotations:1.5.2" level="project" />
     <orderEntry type="library" name="Maven: ru.yandex.qatools.allure:allure-model:1.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.jvnet.jaxb2_commons:jaxb2-basics-runtime:0.9.3" level="project" />
-    <orderEntry type="library" name="Maven: ru.qatools.commons:properties:2.0.RC5" level="project" />
+    <orderEntry type="library" name="Maven: ru.qatools.commons:properties:2.0.RC3" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.12" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tika:tika-core:1.7" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjrt:1.8.3" level="project" />
+    <orderEntry type="library" name="Maven: ru.yandex.qatools.allure:allure-commandline:1.4.21" level="project" />
+    <orderEntry type="library" name="Maven: io.airlift:airline:0.7" level="project" />
+    <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.findbugs:annotations:2.0.3" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.retrofit:retrofit:1.9.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-server:9.2.2.v20140723" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.12" level="project" />
+    <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
   </component>
 </module>

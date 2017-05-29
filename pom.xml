@@ -58,11 +58,11 @@
             <!--<version>1.5.2</version>-->
         <!--</dependency>-->
 
-        <!--<dependency>-->
-            <!--<groupId>ru.yandex.qatools.allure</groupId>-->
-            <!--<artifactId>allure-commandline</artifactId>-->
-            <!--<version>1.4.21</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>ru.yandex.qatools.allure</groupId>
+            <artifactId>allure-commandline</artifactId>
+            <version>1.4.21</version>
+        </dependency>
 
 
         <!--<dependency>-->
@@ -136,7 +136,6 @@
                 <artifactId>allure-maven-plugin</artifactId>
                 <version>2.5</version>
             </plugin>
-
         </plugins>
     </reporting>
 
