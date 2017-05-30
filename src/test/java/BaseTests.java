@@ -55,4 +55,8 @@ public class BaseTests {
         return new ContactUsPage(getWebDriver());
     }
 
+    public BasePage getBasePage(){
+        return new BasePage(getWebDriver());
+    }
+
 }

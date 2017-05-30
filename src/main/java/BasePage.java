@@ -20,12 +20,14 @@ public class BasePage {
         return this.webDriver;
     }
 
-    public String getCurrentUrl(){
-        return getWebDriver().getCurrentUrl();
-    }
+
 
     public WebElement waitForElement(String xpath){
         return (new WebDriverWait(getWebDriver(),10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+    }
+
+    public String getCurrentUrl(){
+        return getWebDriver().getCurrentUrl();
     }
 
     public String getLastBreadCrumb(){
@@ -35,6 +37,7 @@ public class BasePage {
         return waitForElement("//ul[@aria-label='Breadcrumb']/li[last()]").getText();
         //return getWebDriver().findElement(By.xpath("//ul[@aria-label='Breadcrumb']/li[last()]")).getText();
     }
+
 
     public WebElement find(String xpath) {
         return (new WebDriverWait(getWebDriver(),4)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
@@ -69,4 +72,6 @@ public class BasePage {
     public WebElement waitVisabilityOf(WebElement webElement){
         return (new WebDriverWait(getWebDriver(),60)).until(ExpectedConditions.visibilityOf(webElement));
     }
+
+
 }

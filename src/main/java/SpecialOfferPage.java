@@ -9,10 +9,11 @@ public class SpecialOfferPage extends BasePage{
         super(webDriver);
     }
 
-    @FindBy(how= How.XPATH, xpath=".//h1/a/span")
+    @FindBy(how= How.XPATH, xpath=".//h1/span")
     private WebElement title;
 
     public String getTitle(){
+        waitVisabilityOf(title);
         return title.getText();
     }
 
