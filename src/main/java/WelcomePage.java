@@ -55,7 +55,7 @@ public class WelcomePage extends BasePage {
                 return new BasePage(getWebDriver());
             }
         }
-        return new BasePage(getWebDriver());
+        return null;
     }
 
 
@@ -109,5 +109,6 @@ public class WelcomePage extends BasePage {
         }
         return new SpecialOfferPage(getWebDriver());
     }
+
 
 }

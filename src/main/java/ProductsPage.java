@@ -13,6 +13,8 @@ public class ProductsPage extends BasePage {
         super(webDriver);
     }
 
+    String CATALOG_MENU_FIRST_LEVEL = ".//ul[@class='jqtree_common jqtree-tree']/li";
+
     @FindBy(how = How.XPATH, xpath = ".//ul[@class='jqtree_common jqtree-tree']")
     private WebElement productTree;
 
@@ -20,7 +22,7 @@ public class ProductsPage extends BasePage {
     private WebElement title;
 
 
-    public String getTitle(){
+    public String getTitle() {
         return waitForElement("//h3[@class='header-title']/span").getText();
     }
 
@@ -35,7 +37,7 @@ public class ProductsPage extends BasePage {
     }
 
     public List<WebElement> getMaxLevelProducts() throws InterruptedException {
-        String xpathCurrentLevel = ".//ul[@class='jqtree_common jqtree-tree']/li";
+        String xpathCurrentLevel = CATALOG_MENU_FIRST_LEVEL;
         List<WebElement> maxLevelProducts = new ArrayList<WebElement>();
         while (true) {
             maxLevelProducts = getWebDriver().findElements(By.xpath(xpathCurrentLevel + "/ul/li"));
@@ -49,15 +51,14 @@ public class ProductsPage extends BasePage {
 
 
     public String clickOnFirstMaxDepthItemsMenu() throws InterruptedException {
-        List<WebElement> maxLevelProducts=new ArrayList<WebElement>();
+        List<WebElement> maxLevelProducts = new ArrayList<WebElement>();
         String productName;
         expandAllCategory();
-        maxLevelProducts=getMaxLevelProducts();
-        productName=getMaxLevelProducts().get(0).getText();
+        maxLevelProducts = getMaxLevelProducts();
+        productName = getMaxLevelProducts().get(0).getText();
         maxLevelProducts.get(0).click();
         return productName;
     }
-
 
 
 }

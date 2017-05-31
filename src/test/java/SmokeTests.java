@@ -15,7 +15,7 @@ public class SmokeTests extends BaseTests{
     public void checkTitleLinkOfSpecialOfferCarousel(){
         String titleName="HEN WITH GREEN APPLES";
         welcomePage=getWelcomePage();
-        Assert.assertEquals(welcomePage.clickOnTitleOfSpecialOfferCarousel(titleName),titleName);
+        Assert.assertEquals(welcomePage.clickOnTitleOfSpecialOfferCarousel(titleName).getTitle(),titleName);
     }
 
     @Test
@@ -26,8 +26,6 @@ public class SmokeTests extends BaseTests{
         welcomePage.clickOnNextSpecialOfferCarusel();
         Assert.assertNotEquals(welcomePage.getVisibleSpecialOfferCarouselContainers(),VisibleSpecialOffersCarouselContainersBeforeClick, "The arrays shouldn't be equal");
     }
-
-
 
     @Test
     public void maxDepthMenuItemOpensAppropriatePage() throws InterruptedException {

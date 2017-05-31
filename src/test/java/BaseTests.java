@@ -39,6 +39,11 @@ public class BaseTests {
         return new WelcomePage(getWebDriver());
     }
 
+    public ProductsPage openProductsPage() {
+        getWebDriver().navigate().to("http://demo.ict4apps.com/products");
+        return new ProductsPage(getWebDriver());
+    }
+
     public ProductsPage getProductsPage() {
         return new ProductsPage(getWebDriver());
     }
