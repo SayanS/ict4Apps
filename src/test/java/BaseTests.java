@@ -18,7 +18,7 @@ public class BaseTests {
         cap.setBrowserName(browser);
         URL url = new URL("http://192.168.10.61:4445/wd/hub");
         this.webDriver = new RemoteWebDriver(url, cap);
-        getWebDriver().manage().window().maximize();
+        webDriver.manage().window().maximize();
     }
 
     @BeforeMethod
@@ -26,42 +26,47 @@ public class BaseTests {
         webDriver.navigate().to("http://demo.ict4apps.com/welcome");
     }
 
-    public WebDriver getWebDriver() {
-        return this.webDriver;
-    }
+//    public WebDriver getWebDriver() {
+//        return this.webDriver;
+//    }
 
     @AfterClass
     public void tearDown(){
         this.webDriver.close();
     }
 
-    public WelcomePage getWelcomePage() {
-        return new WelcomePage(getWebDriver());
+    public WelcomePage openWelcomePage() {
+        webDriver.navigate().to("http://demo.ict4apps.com");
+        return new WelcomePage(webDriver);
     }
 
     public ProductsPage openProductsPage() {
-        getWebDriver().navigate().to("http://demo.ict4apps.com/products");
-        return new ProductsPage(getWebDriver());
+        webDriver.navigate().to("http://demo.ict4apps.com/products");
+        return new ProductsPage(webDriver);
     }
 
     public ProductsPage getProductsPage() {
-        return new ProductsPage(getWebDriver());
+        return new ProductsPage(webDriver);
     }
 
-    public SpecialOfferPage getSpecialOfferPage() {
-        return new SpecialOfferPage(getWebDriver());
+    public SpecialOfferPage openSpecialOfferPage() {
+        webDriver.navigate().to("http://demo.ict4apps.com/special-offers");
+        return new SpecialOfferPage(webDriver);
     }
 
-    public BlogsPage getBlogsPage() {
-        return new BlogsPage(getWebDriver());
+    public BlogsPage openBlogsPage() {
+        webDriver.navigate().to("http://demo.ict4apps.com/blogs");
+        return new BlogsPage(webDriver);
     }
 
-    public ContactUsPage getContactUsPage() {
-        return new ContactUsPage(getWebDriver());
+    public ContactUsPage openContactUsPage() {
+        webDriver.navigate().to("http://demo.ict4apps.com/contact-us");
+        return new ContactUsPage(webDriver);
     }
 
-    public BasePage getBasePage(){
-        return new BasePage(getWebDriver());
+    public String getCurrentUrl(){
+        return webDriver.getCurrentUrl();
     }
+
 
 }

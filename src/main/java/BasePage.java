@@ -26,12 +26,10 @@ public class BasePage {
         return (new WebDriverWait(getWebDriver(),10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
     }
 
-    public String getCurrentUrl(){
-        return getWebDriver().getCurrentUrl();
-    }
+
 
     public String getLastBreadCrumb(){
-        if(getCurrentUrl().contains("welcome")){
+        if(webDriver.getCurrentUrl().contains("welcome")){
             return "";
         }
         return waitForElement("//ul[@aria-label='Breadcrumb']/li[last()]").getText();

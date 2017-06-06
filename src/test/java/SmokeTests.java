@@ -4,7 +4,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
-public class SmokeTests extends BaseTests{
+public class SmokeTests extends BaseTests {
     WelcomePage welcomePage;
     ProductsPage productsPage;
     SpecialOfferPage specialOfferPage;
@@ -14,14 +14,14 @@ public class SmokeTests extends BaseTests{
     @Test
     public void checkTitleLinkOfSpecialOfferCarousel(){
         String titleName="HEN WITH GREEN APPLES";
-        welcomePage=getWelcomePage();
+        welcomePage=openWelcomePage();
         Assert.assertEquals(welcomePage.clickOnTitleOfSpecialOfferCarousel(titleName).getTitle(),titleName);
     }
 
     @Test
     public void checkNextFunctionOfSpecialOfferCarusel() throws InterruptedException {
         SpecialOffersCarouselContainer[] VisibleSpecialOffersCarouselContainersBeforeClick;
-        welcomePage=getWelcomePage();
+        welcomePage=openWelcomePage();
         VisibleSpecialOffersCarouselContainersBeforeClick=welcomePage.getVisibleSpecialOfferCarouselContainers();
         welcomePage.clickOnNextSpecialOfferCarusel();
         Assert.assertNotEquals(welcomePage.getVisibleSpecialOfferCarouselContainers(),VisibleSpecialOffersCarouselContainersBeforeClick, "The arrays shouldn't be equal");
@@ -29,16 +29,16 @@ public class SmokeTests extends BaseTests{
 
     @Test
     public void maxDepthMenuItemOpensAppropriatePage() throws InterruptedException {
-        welcomePage=getWelcomePage();
+        welcomePage = openWelcomePage();
         welcomePage.selectItemHeaderMenu("PRODUCTS");
-        productsPage=getProductsPage();
-        Assert.assertEquals(productsPage.clickOnFirstMaxDepthItemsMenu(),productsPage.getTitle());
+        productsPage = getProductsPage();
+        Assert.assertEquals(productsPage.clickOnFirstMaxDepthItemsMenu(), productsPage.getTitle());
     }
 
     @Test
     public void checkHeaderMenuNames() {
         String[] expectedMenuItemNames = {"WELCOME", "PRODUCTS", "SPECIAL OFFERS", "BLOGS", "CONTACT US"};
-        welcomePage = getWelcomePage();
+        welcomePage = openWelcomePage();
         Assert.assertEquals(welcomePage.getMenuItemNames().toArray(), expectedMenuItemNames);
     }
 
@@ -54,10 +54,10 @@ public class SmokeTests extends BaseTests{
 
     @Test(dataProvider = "headerMenuLinkRelatedData")
     public void checkHeaderMenuLinks(String[] data) throws InterruptedException {
-        welcomePage = getWelcomePage();
+        welcomePage = openWelcomePage();
         welcomePage.selectItemHeaderMenu(data[0]);
-        Assert.assertEquals(data[1], getBasePage().getCurrentUrl());
-        Assert.assertEquals(data[2], getBasePage().getLastBreadCrumb());
+        Assert.assertEquals(data[1], getCurrentUrl());
+        Assert.assertEquals(data[2], welcomePage.getLastBreadCrumb());
     }
 
 
