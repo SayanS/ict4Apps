@@ -10,26 +10,25 @@ import java.util.List;
 
 
 public class BasePage {
-    public BasePage(WebDriver webDriver){
-        this.webDriver=webDriver;
+    public BasePage(WebDriver webDriver) {
+        this.webDriver = webDriver;
         PageFactory.initElements(this.webDriver, this);
     }
-    private WebDriver webDriver;
 
-     WebDriver getWebDriver(){
+    private WebDriver webDriver;
+/*
+    WebDriver getWebDriver() {
         return this.webDriver;
     }
+*/
 
-
-
-    public WebElement waitForElement(String xpath){
-        return (new WebDriverWait(getWebDriver(),10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+    public WebElement waitForElement(String xpath) {
+        return (new WebDriverWait(webDriver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
     }
 
 
-
-    public String getLastBreadCrumb(){
-        if(webDriver.getCurrentUrl().contains("welcome")){
+    public String getLastBreadCrumb() {
+        if (webDriver.getCurrentUrl().contains("welcome")) {
             return "";
         }
         return waitForElement("//ul[@aria-label='Breadcrumb']/li[last()]").getText();
@@ -38,37 +37,46 @@ public class BasePage {
 
 
     public WebElement find(String xpath) {
-        return (new WebDriverWait(getWebDriver(),4)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+        return (new WebDriverWait(webDriver, 4)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
     }
 
     public List<WebElement> findAll(String xpath) {
-        (new WebDriverWait(getWebDriver(),5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("("+xpath+")[1]")));
-        return getWebDriver().findElements(By.xpath(xpath));
+        (new WebDriverWait(webDriver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(" + xpath + ")[1]")));
+        return webDriver.findElements(By.xpath(xpath));
     }
 
-    public String[] getWebelementsText(List<WebElement> webElements){
-        String[] webelementsText=new String[webElements.size()];
-        for(int i=1;i<webelementsText.length;i++){
-            webelementsText[i]=webElements.get(i).getText();
+    public String[] getWebelementsText(List<WebElement> webElements) {
+        String[] webelementsText = new String[webElements.size()];
+        for (int i = 1; i < webelementsText.length; i++) {
+            webelementsText[i] = webElements.get(i).getText();
         }
         return webelementsText;
     }
 
-    public String[] getWebelementsParameterValue(List<WebElement> webElements, String parameterName){
-        String[] webelementsParameterValue=new String[webElements.size()];
-        for(int i=1;i<webelementsParameterValue.length;i++){
-            webelementsParameterValue[i]=webElements.get(i).getAttribute(parameterName);
+    public String[] getWebelementsParameterValue(List<WebElement> webElements, String parameterName) {
+        String[] webelementsParameterValue = new String[webElements.size()];
+        for (int i = 1; i < webelementsParameterValue.length; i++) {
+            webelementsParameterValue[i] = webElements.get(i).getAttribute(parameterName);
         }
         return webelementsParameterValue;
     }
 
-    public void moveTo(WebElement webElement){
-        Actions action=new Actions(getWebDriver());
+    public void moveTo(WebElement webElement) {
+        Actions action = new Actions(webDriver);
         action.moveToElement(webElement).perform();
     }
 
-    public WebElement waitVisabilityOf(WebElement webElement){
-        return (new WebDriverWait(getWebDriver(),60)).until(ExpectedConditions.visibilityOf(webElement));
+    public WebElement waitVisabilityOf(WebElement webElement) {
+        return (new WebDriverWait(webDriver, 60)).until(ExpectedConditions.visibilityOf(webElement));
+    }
+
+    public WebElement getWebElementFromListByVisibleText(List<WebElement> webElements, String text){
+        for(WebElement webElement:webElements){
+            if(webElement.getText().equals(text)){
+                return webElement;
+            }
+        }
+        return null;
     }
 
 

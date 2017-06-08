@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsPage extends BasePage {
+    private WebDriver webDriver;
+
     public ProductsPage(WebDriver webDriver) {
         super(webDriver);
+        this.webDriver=webDriver;
     }
 
     String CATALOG_MENU_FIRST_LEVEL = ".//ul[@class='jqtree_common jqtree-tree']/li";
@@ -20,6 +23,22 @@ public class ProductsPage extends BasePage {
 
     @FindBy(how = How.XPATH, xpath = "//h3[@class='header-title']/span")
     private WebElement title;
+
+    @FindBy(how = How.XPATH, xpath = ".//input[@name='_3_keywords']")
+    private WebElement searchField;
+
+    @FindBy(how = How.XPATH, xpath = ".//button[@type='submit']")
+    private WebElement searchButton;
+
+    public SearchResultsPage clickOnSearchButton(){
+        searchButton.click();
+        return new SearchResultsPage(webDriver);
+    }
+
+    public void enterKeyWordIntoSearchField(String keyWord){
+        searchField.clear();
+        searchField.sendKeys(keyWord);
+    }
 
 
     public String getTitle() {
@@ -31,21 +50,21 @@ public class ProductsPage extends BasePage {
         while (true) {
             currentLevelTree = productTree.findElements(By.xpath(".//a[.='►']"));
             if (currentLevelTree.size() == 0) break;
-            ((JavascriptExecutor) getWebDriver()).executeScript("arguments[0].click();", currentLevelTree.get(0));
+            ((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", currentLevelTree.get(0));
         }
-        return new ProductsPage(getWebDriver());
+        return new ProductsPage(webDriver);
     }
 
     public List<WebElement> getMaxLevelProducts() throws InterruptedException {
         String xpathCurrentLevel = CATALOG_MENU_FIRST_LEVEL;
         List<WebElement> maxLevelProducts = new ArrayList<WebElement>();
         while (true) {
-            maxLevelProducts = getWebDriver().findElements(By.xpath(xpathCurrentLevel + "/ul/li"));
+            maxLevelProducts =webDriver.findElements(By.xpath(xpathCurrentLevel + "/ul/li"));
             if (maxLevelProducts.size() != 0) {
                 xpathCurrentLevel = xpathCurrentLevel + "/ul/li";
             } else break;
         }
-        maxLevelProducts = getWebDriver().findElements(By.xpath(xpathCurrentLevel + "/div/span"));
+        maxLevelProducts = webDriver.findElements(By.xpath(xpathCurrentLevel + "/div/span"));
         return maxLevelProducts;
     }
 

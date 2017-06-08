@@ -15,6 +15,8 @@ public class WelcomePage extends BasePage {
     String VISIBLE_SPECIAL_OFFERS_CONTAINERS_DESCRIPTIONS = ".//div[@id='p_p_id_PRODUCT_PORTLET_WAR_ict4appsportlet_']//div[@class='slick-track']/div[@class='slick-slide slick-active']//div[@id='latestDesc']";
     String VISIBLE_SPECIAL_OFFERS_CONTAINERS_IMAGES = ".//div[@id='p_p_id_PRODUCT_PORTLET_WAR_ict4appsportlet_']//div[@class='slick-track']/div[@class='slick-slide slick-active']//img";
 
+    private WebDriver webDriver;
+
     @FindBy(how = How.XPATH, xpath = "//ul[@role='menubar']/li/a")
     private List<WebElement> headerMenu;
 
@@ -41,11 +43,12 @@ public class WelcomePage extends BasePage {
 
     public SignInPage clickOnSignInButton(){
         signInButton.click();
-        return new SignInPage(getWebDriver());
+        return new SignInPage(webDriver);
     }
 
     public WelcomePage(WebDriver webDriver) {
         super(webDriver);
+        this.webDriver=webDriver;
     }
 
     public List<String> getMenuItemNames() {
@@ -60,7 +63,7 @@ public class WelcomePage extends BasePage {
         for (WebElement we : headerMenu) {
             if (we.getText().equals(itemName)) {
                 we.click();
-                return new BasePage(getWebDriver());
+                return new BasePage(webDriver);
             }
         }
         return null;
@@ -84,10 +87,10 @@ public class WelcomePage extends BasePage {
         SpecialOffersCarouselContainer[] visibleContainers = new SpecialOffersCarouselContainer[visibleConteiners];
         for (int i = 0; i < visibleConteiners; i++) {
             visibleContainers[i] = new SpecialOffersCarouselContainer();
-            moveTo(getWebDriver().findElement(By.xpath("(" + VISIBLE_SPECIAL_OFFERS_CONTAINERS_IMAGES + ")[" + (i + 1) + "]")));
-            visibleContainers[i].imageUrl = getWebDriver().findElement(By.xpath("(" + VISIBLE_SPECIAL_OFFERS_CONTAINERS_IMAGES + ")[" + (i + 1) + "]")).getAttribute("src").replace("http://demo.ict4apps.com", "");
-            visibleContainers[i].description = getWebDriver().findElement(By.xpath("(" + VISIBLE_SPECIAL_OFFERS_CONTAINERS_DESCRIPTIONS + ")[" + (i + 1) + "]")).getText();
-            visibleContainers[i].title = getWebDriver().findElement(By.xpath("(" + VISIBLE_SPECIAL_OFFERS_CONTAINERS_TITLES + ")[" + (i + 1) + "]")).getText();
+            moveTo(webDriver.findElement(By.xpath("(" + VISIBLE_SPECIAL_OFFERS_CONTAINERS_IMAGES + ")[" + (i + 1) + "]")));
+            visibleContainers[i].imageUrl = webDriver.findElement(By.xpath("(" + VISIBLE_SPECIAL_OFFERS_CONTAINERS_IMAGES + ")[" + (i + 1) + "]")).getAttribute("src").replace("http://demo.ict4apps.com", "");
+            visibleContainers[i].description = webDriver.findElement(By.xpath("(" + VISIBLE_SPECIAL_OFFERS_CONTAINERS_DESCRIPTIONS + ")[" + (i + 1) + "]")).getText();
+            visibleContainers[i].title = webDriver.findElement(By.xpath("(" + VISIBLE_SPECIAL_OFFERS_CONTAINERS_TITLES + ")[" + (i + 1) + "]")).getText();
         }
         return visibleContainers;
     }
@@ -95,7 +98,7 @@ public class WelcomePage extends BasePage {
     public SpecialOfferPage clickOnTitleOfSpecialOfferCarousel(int i) {
         moveTo(find("(" + VISIBLE_SPECIAL_OFFERS_CONTAINERS_IMAGES + ")[" + (i + 1) + "]"));
         find("(" + VISIBLE_SPECIAL_OFFERS_CONTAINERS_TITLES + ")[" + (i + 1) + "]").click();
-        return new SpecialOfferPage(getWebDriver());
+        return new SpecialOfferPage(webDriver);
     }
 
     public SpecialOfferPage clickOnTitleOfSpecialOfferCarousel(String name) {
@@ -115,7 +118,7 @@ public class WelcomePage extends BasePage {
                 break;
             }
         }
-        return new SpecialOfferPage(getWebDriver());
+        return new SpecialOfferPage(webDriver);
     }
 
 
