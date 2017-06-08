@@ -16,7 +16,7 @@ public class BasePage {
     }
     private WebDriver webDriver;
 
-    public WebDriver getWebDriver(){
+     WebDriver getWebDriver(){
         return this.webDriver;
     }
 

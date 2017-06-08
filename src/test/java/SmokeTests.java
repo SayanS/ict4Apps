@@ -12,6 +12,11 @@ public class SmokeTests extends BaseTests {
 
 
     @Test
+    public void checkAbilityOfSuccessfulRegistration(){
+        openWelcomePage().clickOnSignInButton();
+    }
+
+    @Test
     public void checkTitleLinkOfSpecialOfferCarousel(){
         String titleName="HEN WITH GREEN APPLES";
         welcomePage=openWelcomePage();

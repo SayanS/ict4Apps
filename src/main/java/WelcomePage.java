@@ -36,6 +36,14 @@ public class WelcomePage extends BasePage {
     @FindBy(how = How.XPATH, xpath = ".//section[@id='portlet_PRODUCT_PORTLET_WAR_ict4appsportlet']//button[@class='slick-next']")
     private WebElement nextButtonSpecialOffersCarusel;
 
+    @FindBy(how=How.XPATH, xpath = ".//a[@class='login']")
+    private WebElement signInButton;
+
+    public SignInPage clickOnSignInButton(){
+        signInButton.click();
+        return new SignInPage(getWebDriver());
+    }
+
     public WelcomePage(WebDriver webDriver) {
         super(webDriver);
     }
