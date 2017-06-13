@@ -26,10 +26,6 @@ public class BaseTests {
         webDriver.navigate().to("http://demo.ict4apps.com/welcome");
     }
 
-//    public WebDriver getWebDriver() {
-//        return this.webDriver;
-//    }
-
     @AfterClass
     public void tearDown(){
         this.webDriver.close();

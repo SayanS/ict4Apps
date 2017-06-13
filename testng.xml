@@ -19,7 +19,7 @@
         <parameter name="browser" value="chrome"/>
         <parameter name="platform" value="WIN10"/>
         <classes>
-            <class name="SmokeTests"/>
+            <class name="SearchFunctionalityTests"/>
         </classes>
     </test>
 
