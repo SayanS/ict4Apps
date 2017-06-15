@@ -60,7 +60,7 @@ public class SearchResultsPage extends BasePage {
         return webDriver.findElement(By.xpath(".//select[@title='selected_scope']/option[@selected='']")).getText();
     }
     
-    public String[] getAllSearchCategoryFromCurrentPage(){
+    public List<String> getAllSearchCategoryFromCurrentPage(){
         return getWebelementsText(searchResultContainer.findElements(By.xpath("//span[@class='asset-entry-type']")));
     }
 

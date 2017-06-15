@@ -21,11 +21,6 @@ public class BaseTests {
         webDriver.manage().window().maximize();
     }
 
-    @BeforeMethod
-    public void beforeMethod(){
-        webDriver.navigate().to("http://demo.ict4apps.com/welcome");
-    }
-
     @AfterClass
     public void tearDown(){
         this.webDriver.close();

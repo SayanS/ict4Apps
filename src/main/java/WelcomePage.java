@@ -72,9 +72,9 @@ public class WelcomePage extends BasePage {
 
     public void checkCaruselAction() {
 
-        String[] allTitelesSpecialOffers = getWebelementsText(allTitelesSpecialOffersContainers);
-        String[] allDescriptionsSpecialOffers = getWebelementsText(allDescriptionsSpecialOffersContainers);
-        String[] allImagesSpecialOffers = getWebelementsParameterValue(allImgSpecialOffersContainers, "data-lazy");
+        List<String> allTitelesSpecialOffers = getWebelementsText(allTitelesSpecialOffersContainers);
+        List<String> allDescriptionsSpecialOffers = getWebelementsText(allDescriptionsSpecialOffersContainers);
+        List<String> allImagesSpecialOffers = getWebelementsParameterValue(allImgSpecialOffersContainers, "data-lazy");
 
     }
 

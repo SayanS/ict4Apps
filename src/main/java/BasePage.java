@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -6,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -45,20 +47,20 @@ public class BasePage {
         return webDriver.findElements(By.xpath(xpath));
     }
 
-    public String[] getWebelementsText(List<WebElement> webElements) {
-        String[] webelementsText = new String[webElements.size()];
-        for (int i = 1; i < webelementsText.length; i++) {
-            webelementsText[i] = webElements.get(i).getText();
+    public List<String> getWebelementsText(List<WebElement> webElements) {
+        List<String> webelementsText = new ArrayList<>();
+        for (WebElement webElement:webElements) {
+            webelementsText.add(webElement.getText());
         }
         return webelementsText;
     }
 
-    public String[] getWebelementsParameterValue(List<WebElement> webElements, String parameterName) {
-        String[] webelementsParameterValue = new String[webElements.size()];
-        for (int i = 1; i < webelementsParameterValue.length; i++) {
-            webelementsParameterValue[i] = webElements.get(i).getAttribute(parameterName);
+    public List<String> getWebelementsParameterValue(List<WebElement> webElements, String parameterName) {
+        List<String> webElementsParameterValue = new ArrayList<String>();
+        for (WebElement webElement:webElements) {
+            webElementsParameterValue.add(webElement.getAttribute(parameterName));
         }
-        return webelementsParameterValue;
+        return webElementsParameterValue;
     }
 
     public void moveTo(WebElement webElement) {
@@ -77,6 +79,11 @@ public class BasePage {
             }
         }
         return null;
+    }
+
+    public HeaderMenuAfterScrollDown scrollDownPage(){
+        ((JavascriptExecutor) webDriver).executeScript("window.scrollBy(0,250);");
+        return new HeaderMenuAfterScrollDown(webDriver);
     }
 
 
